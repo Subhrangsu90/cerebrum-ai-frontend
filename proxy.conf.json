@@ -1,6 +1,6 @@
 {
   "/chat": {
-    "target": "http://localhost:3000",
+    "target": "https://cerebrum-ai-backend.onrender.com",
     "secure": false
   }
 }
