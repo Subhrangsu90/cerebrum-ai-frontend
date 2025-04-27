@@ -1,1 +1,72 @@
-/* You can add global styles to this file, and also import other style files */
+/* ============================== */
+/* IMPORTS FIRST! */
+/* ============================== */
+
+@use "./markdown.styles";
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+
+@import "prismjs/themes/prism-okaidia.css";
+@import "prismjs/plugins/line-numbers/prism-line-numbers.css";
+@import "prismjs/plugins/line-highlight/prism-line-highlight.css";
+@import "primeicons/primeicons.css";
+
+/* ============================== */
+/* THEN LAYERS, STYLES, ETC. */
+/* ============================== */
+
+@layer theme, base, components, utilities;
+
+/* your custom styles here */
+
+:root {
+  --primary-50: #e0f7f8;
+  --primary-100: #b3ecef;
+  --primary-200: #80e0e5;
+  --primary-300: #4dd3db;
+  --primary-400: #26c6cf;
+  --primary-500: #00adb5;
+  --primary-600: #009aa1;
+  --primary-700: #00878d;
+  --primary-800: #00686d;
+  --primary-900: #00494c;
+
+  /* Core Brand Colors */
+  --color-primary: var(--primary-500);
+  --color-primary-hover: var(--primary-600);
+  --color-accent: var(--primary-300);
+
+  /* Text and Background */
+  --color-bg: #1d1d1d;
+  --color-surface: #353535;
+  --color-text: #e0e0e0;
+  --color-muted: #a0bfc0;
+
+  /* Scrollbars */
+  --color-scroll-thumb: #444;
+  --color-scroll-track: #1e1e1e;
+
+  /* Borders and Highlights */
+  --color-border: #333;
+  --color-border-focus: var(--color-primary);
+
+  /* Code blocks and markdown */
+  --color-markdown-text: #e0e0e0;
+
+  /* Optional Add-ons */
+  --color-success: #4caf50;
+  --color-error: #f44336;
+  --color-warning: #ff9800;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  height: 100vh;
+}

@@ -1,0 +1,86 @@
+<div class="chat-container">
+    <div class="chat-thread">
+        @if (chatHistory.length === 0 && !loading) {
+        <div class="brand-container">
+            <div class="logo">
+                <img src="assets/icons/cerebrumai-removebg.png" alt="">
+                <h1>CerebrumAI</h1>
+            </div>
+            <div class="tagline">
+                <p>"Unleashing the Power of Intelligent Conversations"</p>
+            </div>
+        </div>
+        <div class="empty-state">
+            <!-- <h2 class="greeting-header text-2xl">Welcome back! I'm here to answer your questions. What can I help with
+                today?</h2> -->
+            <!-- <p class="greeting-subtext">{{ greetingMessage }} How can I assist you today?</p> -->
+            <p class="greeting-subtext">
+                <span>Welcome back! I'm here to answer your questions.</span>
+                <span>What can I help with today?</span>
+            </p>
+        </div>
+        }
+        @for (chat of chatHistory; track $index) {
+        <div class="chat-entry">
+            <div class="chat-question">
+                <div class="chat-question-header">
+                    {{ chat.question }}
+                </div>
+            </div>
+            <div class="chat-answer" appAutoWrapCode>
+                @if (!chat.loading ) {
+                <markdown [data]="chat.answer" [disableSanitizer]="true" (ready)="onMarkdownRendered() ">
+                </markdown>
+                }
+                @if (chat.loading ) {
+                <div class="skeleton-loader">
+                    <div class="skeleton skeleton-text"></div>
+                    <div class="skeleton skeleton-text" style="width: 90%;"></div>
+                    <div class="skeleton skeleton-text" style="width: 80%;"></div>
+                </div>
+                }
+            </div>
+        </div>
+        }
+    </div>
+    <div class="chat-input">
+        <textarea pTextarea [(ngModel)]="question" placeholder="Ask something..." (keyup.enter)="ask() "
+            [autoResize]="true" style="overflow-y: auto; "></textarea>
+        <div>
+            <p-button [rounded]="true" [outlined]="true" (click)="ask()" [disabled]="loading">
+                <ng-template pTemplate="icon">
+                    @if (!loading) {
+                    <!-- Send SVG -->
+                    <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px"
+                        fill="var(--p-button-outlined-primary-color)">
+                        <path
+                            d="M144-192v-576l720 288-720 288Zm72-107 454-181-454-181v109l216 72-216 72v109Zm0 0v-362 362Z" />
+                    </svg>
+                    } @else {
+                    <!-- Stop SVG -->
+                    <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px"
+                        fill="var(--p-button-outlined-primary-color)">
+                        <path d="M236-236h480v-480H236v480Z" />
+                    </svg>
+                    }
+                </ng-template>
+            </p-button>
+        </div>
+    </div>
+</div>
+
+<p-drawer header="Citations" [(visible)]="isVisible" position="right" styleClass="!w-full md:!w-80 lg:!w-[30rem]">
+    @if (sources.length > 0) {
+    <ul class="source-list">
+        @for (src of sources; track $index) {
+        <li>
+            <a [href]="src.href" target="_blank" rel="noopener noreferrer">
+                <img [src]="src.icon" width="16" height="16" />
+                <strong>{{ src.title }}</strong>
+            </a>
+            <p>{{ src.snippet }}</p>
+        </li>
+        }
+    </ul>
+    }@else {<p>No sources found.</p>}
+</p-drawer>
