@@ -76,6 +76,16 @@
         font-style: italic;
         position: relative;
       }
+      .dev-progress-tag {
+        background-color: #ffcc00ae; /* Yellow background */
+        color: #3e3d3d; /* White text */
+        padding: 5px 10px;
+        border-radius: 20px;
+        font-size: 14px;
+        font-weight: bold;
+        margin-top: 10px;
+        display: inline-block;
+      }
     }
 
     .empty-state {
@@ -105,14 +115,6 @@
   }
 
   .chat-input {
-    // display: flex;
-    // // flex-direction: column;
-    // gap: 0.5rem;
-    // padding: 1rem;
-
-    // background-color: var(--color-surface);
-    // border-radius: 8px;
-    // border: 1px solid #333;
     position: sticky;
     // align-items: flex-end;
     bottom: 0;
@@ -139,20 +141,9 @@
       font-size: 0.95rem;
       resize: none;
       transition: border-color 0.2s ease;
-      // max-height: 300px;
       overflow-y: auto;
-      &::-webkit-scrollbar-track {
-        background: var(--color-scroll-track);
-      }
-      &::-webkit-scrollbar {
-        width: 6px;
-        background-color: var(--color-scroll-thumb);
-      }
-
-      &:focus {
-        border-color: var(--color-border-focus);
-        outline: none;
-      }
+      scrollbar-width: thin; /* For Firefox */
+      scrollbar-color: var(--color-scroll-thumb) transparent; /* For Firefox */
     }
 
     button {

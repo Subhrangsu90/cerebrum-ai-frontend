@@ -9,11 +9,11 @@
             <div class="tagline">
                 <p>"Unleashing the Power of Intelligent Conversations"</p>
             </div>
+            <div class="dev-progress-tag">
+                <span>🚧 In Development</span>
+            </div>
         </div>
         <div class="empty-state">
-            <!-- <h2 class="greeting-header text-2xl">Welcome back! I'm here to answer your questions. What can I help with
-                today?</h2> -->
-            <!-- <p class="greeting-subtext">{{ greetingMessage }} How can I assist you today?</p> -->
             <p class="greeting-subtext">
                 <span>Welcome back! I'm here to answer your questions.</span>
                 <span>What can I help with today?</span>
@@ -45,8 +45,9 @@
     </div>
     <div class="chat-input">
         <div class="mx-1 chat-input-container">
-            <textarea pTextarea [(ngModel)]="question" placeholder="Ask something..." (keyup.enter)="ask() "
-                [autoResize]="true" style="overflow-y: auto; "></textarea>
+            <textarea #textareaElement pTextarea [(ngModel)]="question" placeholder="Ask something..."
+                (keyup.enter)="ask() " (onResize)="enforceMaxHeight()" [autoResize]="true"
+                style="overflow-y: auto; "></textarea>
             <div>
                 <p-button [rounded]="true" [outlined]="true" (click)="ask()" [disabled]="loading">
                     <ng-template pTemplate="icon">

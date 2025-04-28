@@ -2,6 +2,7 @@ import {
   ChangeDetectorRef,
   Component,
   ElementRef,
+  EventEmitter,
   inject,
   OnInit,
   Renderer2,
@@ -40,11 +41,13 @@ export class ChatComponent implements OnInit {
   public isVisible: boolean = false;
   public sources: Source[] = [];
   public shouldScrollToViewportTop: boolean = false;
+  public maxTextareaHeight: number = 200;
 
   private readonly elRef: ElementRef = inject(ElementRef);
   private readonly renderer: Renderer2 = inject(Renderer2);
   private readonly chatService: ChatService = inject(ChatService);
   private readonly cdr: ChangeDetectorRef = inject(ChangeDetectorRef);
+  @ViewChild('textareaElement') textareaRef!: ElementRef<HTMLTextAreaElement>;
 
   ngOnInit(): void {
     const hours = new Date().getHours();
@@ -141,5 +144,15 @@ export class ChatComponent implements OnInit {
         snippet: link.getAttribute('data-snippet'),
       });
     });
+  }
+
+  enforceMaxHeight() {
+    const textarea = this.textareaRef?.nativeElement;
+    if (!textarea) return;
+
+    if (textarea.scrollHeight > this.maxTextareaHeight) {
+      textarea.style.height = this.maxTextareaHeight + 'px';
+      textarea.style.overflowY = 'auto';
+    }
   }
 }
