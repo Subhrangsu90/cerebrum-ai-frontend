@@ -44,27 +44,29 @@
         }
     </div>
     <div class="chat-input">
-        <textarea pTextarea [(ngModel)]="question" placeholder="Ask something..." (keyup.enter)="ask() "
-            [autoResize]="true" style="overflow-y: auto; "></textarea>
-        <div>
-            <p-button [rounded]="true" [outlined]="true" (click)="ask()" [disabled]="loading">
-                <ng-template pTemplate="icon">
-                    @if (!loading) {
-                    <!-- Send SVG -->
-                    <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px"
-                        fill="var(--p-button-outlined-primary-color)">
-                        <path
-                            d="M144-192v-576l720 288-720 288Zm72-107 454-181-454-181v109l216 72-216 72v109Zm0 0v-362 362Z" />
-                    </svg>
-                    } @else {
-                    <!-- Stop SVG -->
-                    <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px"
-                        fill="var(--p-button-outlined-primary-color)">
-                        <path d="M236-236h480v-480H236v480Z" />
-                    </svg>
-                    }
-                </ng-template>
-            </p-button>
+        <div class="mx-1 chat-input-container">
+            <textarea pTextarea [(ngModel)]="question" placeholder="Ask something..." (keyup.enter)="ask() "
+                [autoResize]="true" style="overflow-y: auto; "></textarea>
+            <div>
+                <p-button [rounded]="true" [outlined]="true" (click)="ask()" [disabled]="loading">
+                    <ng-template pTemplate="icon">
+                        @if (!loading) {
+                        <!-- Send SVG -->
+                        <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px"
+                            fill="var(--p-button-outlined-primary-color)">
+                            <path
+                                d="M144-192v-576l720 288-720 288Zm72-107 454-181-454-181v109l216 72-216 72v109Zm0 0v-362 362Z" />
+                        </svg>
+                        } @else {
+                        <!-- Stop SVG -->
+                        <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px"
+                            fill="var(--p-button-outlined-primary-color)">
+                            <path d="M236-236h480v-480H236v480Z" />
+                        </svg>
+                        }
+                    </ng-template>
+                </p-button>
+            </div>
         </div>
     </div>
 </div>

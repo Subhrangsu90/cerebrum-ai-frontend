@@ -122,6 +122,7 @@ export class ChatComponent implements OnInit {
     const buttons = nativeElement.querySelectorAll('.source-btn');
     buttons.forEach((button: HTMLElement) => {
       this.renderer.listen(button, 'click', () => {
+        this.sources = [];
         this.extractSources();
         this.isVisible = true;
       });
@@ -129,7 +130,6 @@ export class ChatComponent implements OnInit {
   }
 
   private extractSources(): void {
-    this.sources = [];
     const nativeElement = this.elRef.nativeElement;
     const sourceLinks = nativeElement.querySelectorAll('.link');
 

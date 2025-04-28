@@ -76,7 +76,7 @@ export class AutoWrapCodeDirective implements AfterViewChecked {
     this.renderer.setProperty(
       copyIcon,
       'innerHTML',
-      `<i class="pi pi-check" style="font-size: 0.8rem"></i> Copied`
+      `<i class="pi pi-check" style="font-size: 0.8rem"></i> Copied!`
     );
 
     // Reset after 2 seconds
