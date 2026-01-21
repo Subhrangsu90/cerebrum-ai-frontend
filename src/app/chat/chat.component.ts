@@ -18,6 +18,7 @@ import { ChatService } from '../services/chat.service';
 import { AutoWrapCodeDirective } from '../directives/auto-wrap-code.directive';
 import { ChatMessage } from '../interfaces/chat-message';
 import { Source } from '../interfaces/source';
+import { ChatHistoryComponent } from '../chat-history/chat-history.component';
 
 @Component({
   selector: 'app-chat',
@@ -28,6 +29,7 @@ import { Source } from '../interfaces/source';
     AutoWrapCodeDirective,
     DrawerModule,
     TextareaModule,
+    ChatHistoryComponent,
   ],
   templateUrl: './chat.component.html',
   styleUrl: './chat.component.scss',
@@ -77,7 +79,7 @@ export class ChatComponent implements OnInit {
     // this.shouldScrollToViewportTop = true;
     setTimeout(() => {
       const lastMessageElement = document.querySelector(
-        '.chat-entry:last-child .chat-question'
+        '.chat-entry:last-child .chat-question',
       );
       if (lastMessageElement) {
         console.log('Scrolling to last message element:', lastMessageElement);
@@ -97,12 +99,12 @@ export class ChatComponent implements OnInit {
         // this.shouldScrollToViewportTop = false;
         setTimeout(() => {
           const lastMessageElement = document.querySelector(
-            '.chat-entry:last-child .chat-question'
+            '.chat-entry:last-child .chat-question',
           );
           if (lastMessageElement) {
             console.log(
               'Scrolling to last message element:',
-              lastMessageElement
+              lastMessageElement,
             );
             lastMessageElement.scrollIntoView();
           }

@@ -1,0 +1,20 @@
+<div class="history-panel">
+    <h3>💬 Chat History</h3>
+
+    @if (loading) {
+    <p class="loading">Loading...</p>
+    }
+
+    @if (!loading && sessions.length === 0) {
+    <p class="empty">No conversations yet</p>
+    }
+
+    <ul>
+        @for (id of sessions; track $index) {
+        <li (click)="selectSession(id)">
+            <span>Session</span>
+            <small>{{ id.slice(0, 8) }}</small>
+        </li>
+        }
+    </ul>
+</div>
